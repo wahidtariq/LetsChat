@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9A52D55227DC7D31002D26AC /* LetsChatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A52D55127DC7D31002D26AC /* LetsChatApp.swift */; };
-		9A52D55427DC7D31002D26AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A52D55327DC7D31002D26AC /* ContentView.swift */; };
+		9A52D55427DC7D31002D26AC /* LoginPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A52D55327DC7D31002D26AC /* LoginPage.swift */; };
 		9A52D55627DC7D32002D26AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A52D55527DC7D32002D26AC /* Assets.xcassets */; };
 		9A52D55927DC7D32002D26AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A52D55827DC7D32002D26AC /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -16,7 +16,7 @@
 /* Begin PBXFileReference section */
 		9A52D54E27DC7D31002D26AC /* LetsChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LetsChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A52D55127DC7D31002D26AC /* LetsChatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetsChatApp.swift; sourceTree = "<group>"; };
-		9A52D55327DC7D31002D26AC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9A52D55327DC7D31002D26AC /* LoginPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPage.swift; sourceTree = "<group>"; };
 		9A52D55527DC7D32002D26AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A52D55827DC7D32002D26AC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,7 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				9A52D55127DC7D31002D26AC /* LetsChatApp.swift */,
-				9A52D55327DC7D31002D26AC /* ContentView.swift */,
+				9A52D55327DC7D31002D26AC /* LoginPage.swift */,
 				9A52D55527DC7D32002D26AC /* Assets.xcassets */,
 				9A52D55727DC7D32002D26AC /* Preview Content */,
 			);
@@ -137,7 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A52D55427DC7D31002D26AC /* ContentView.swift in Sources */,
+				9A52D55427DC7D31002D26AC /* LoginPage.swift in Sources */,
 				9A52D55227DC7D31002D26AC /* LetsChatApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

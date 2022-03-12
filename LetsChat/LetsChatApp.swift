@@ -11,7 +11,7 @@ import SwiftUI
 struct LetsChatApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginPage()
         }
     }
 }
