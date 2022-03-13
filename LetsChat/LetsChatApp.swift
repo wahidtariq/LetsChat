@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Firebase
 
 @main
 struct LetsChatApp: App {
@@ -14,4 +15,7 @@ struct LetsChatApp: App {
             LoginPage()
         }
     }
+//    init(){
+//        FirebaseApp.configure()
+//    }
 }

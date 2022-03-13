@@ -8,20 +8,20 @@
 import SwiftUI
 
 struct LoginPage: View {
-    @State var isLoginPage = false
-    @State var email = ""
-    @State var password = ""
+    
+    @StateObject var loginVM = LoginViewModel()
     
     var body: some View {
         NavigationView{
             ScrollView{
+                
                 //MARK: - picker and image view textfields create account button
                 VStack(spacing: 12){
                     picker
                         .pickerStyle(SegmentedPickerStyle())
                     Spacer()
                     
-                    if !isLoginPage{
+                    if !loginVM.isLoginPage{
                         imageView
                     }
                     
@@ -31,20 +31,24 @@ struct LoginPage: View {
                         .background(.white)
                     Spacer()
                     createAccountButton
+//                    error or success message field.
+                    Text(loginVM.loginStatusMessage)
+                        .foregroundColor(.red)
                 }
                 .padding()
             }
             
-            .navigationTitle(isLoginPage ? "Login" : "Create Account" )
+            .navigationTitle(loginVM.isLoginPage ? "Login" : "Create Account" )
             .background(Color.init(white: 0, opacity: 0.05).ignoresSafeArea())
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
     
     
     
     
     var picker : some View {
-        Picker("", selection: $isLoginPage) {
+        Picker("", selection: $loginVM.isLoginPage) {
             Text("Login")
                 .tag(true)
             Text("Create Account.")
@@ -53,6 +57,8 @@ struct LoginPage: View {
     }
     var imageView : some View{
         Button{
+            
+            //getImageFromGallery()
             
         }label: {
             Image(systemName: "person.crop.circle.badge.plus")
@@ -65,20 +71,20 @@ struct LoginPage: View {
     
     var textFields: some View{
         Group{
-            TextField("Email", text: $email)
+            TextField("Email", text: $loginVM.email)
                 .keyboardType(.emailAddress)
                 .textInputAutocapitalization(.never)
-            SecureField("Password", text: $password)
+            SecureField("Password", text: $loginVM.password)
         }
     }
     
     var createAccountButton: some View{
         Button{
-            handleAction()
+            loginVM.handleAction()
         }label: {
             HStack{
                 Spacer()
-                Text(isLoginPage ? "Login" : "Create Account")
+                Text(loginVM.isLoginPage ? "Login" : "Create Account")
                     .foregroundColor(.white)
                     .padding(.vertical, 10)
                     .font(.title3)
@@ -90,13 +96,13 @@ struct LoginPage: View {
     }
     
     
-    private func handleAction(){
-        if isLoginPage{
-            print("login to the firebase with existing credentials")
-        }else{
-            print("create new account")
-        }
-    }
+    
+    
+    
+    
+    
+    
+    
 }
 struct ContentView_Previews1: PreviewProvider {
     static var previews: some View {
