@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import UIKit
+import Firebase
 
 
 class LoginViewModel: ObservableObject{
@@ -14,6 +16,9 @@ class LoginViewModel: ObservableObject{
     @Published var email = ""
     @Published var password = ""
     @Published var loginStatusMessage = ""
+    @Published var shouldShowImagePicker = false
+    @Published var image: UIImage?
+    
     
     //    As per segmentControl if picker selection login then login page or create new account the create new account page
     
@@ -36,6 +41,7 @@ class LoginViewModel: ObservableObject{
                     return
                 }
                 self.loginStatusMessage = "Successfully created user \(result?.user.uid ?? "no Uid found")"
+                self.persisImageToFirebaseStorage()
             }
         }else {
             loginStatusMessage = "Username and password Missing"
@@ -64,8 +70,6 @@ class LoginViewModel: ObservableObject{
     }
     
     func checkEmailAndPasswordFieldIsEmpty() -> Bool {
-        
-        
         guard email.isEmpty, password.isEmpty else { return true }
         return false
     }
@@ -75,5 +79,26 @@ class LoginViewModel: ObservableObject{
             self.loginStatusMessage = ""
         }
     }
-    
+    func persisImageToFirebaseStorage(){
+        
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
+        let storageRefrence = FirebaseManager.shared.storage.reference(withPath: uid)
+        
+        guard let data = image?.jpegData(compressionQuality: 0.5) else { return }
+        
+        
+        storageRefrence.putData(data, metadata: nil) { [weak self] metadata, error in
+            guard let self = self else { return }
+            if let err = error {
+                self.loginStatusMessage = "failed to push image to storage \(err)"
+                return
+            }
+            storageRefrence.downloadURL { url, error in
+                if let err = error{
+                    self.loginStatusMessage = "failed to download the url of image form firebase \(err.localizedDescription)"
+                }
+                self.loginStatusMessage = "success! \(String(describing: url?.absoluteURL))"
+            }
+        }
+    }
 }

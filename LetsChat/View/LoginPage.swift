@@ -31,6 +31,7 @@ struct LoginPage: View {
                         .background(.white)
                     Spacer()
                     createAccountButton
+                    
 //                    error or success message field.
                     Text(loginVM.loginStatusMessage)
                         .foregroundColor(.red)
@@ -40,6 +41,9 @@ struct LoginPage: View {
             
             .navigationTitle(loginVM.isLoginPage ? "Login" : "Create Account" )
             .background(Color.init(white: 0, opacity: 0.05).ignoresSafeArea())
+            .sheet(isPresented: $loginVM.shouldShowImagePicker) {
+                ImagePicker(image: $loginVM.image)
+            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
@@ -57,15 +61,23 @@ struct LoginPage: View {
     }
     var imageView : some View{
         Button{
-            
-            //getImageFromGallery()
-            
+            loginVM.shouldShowImagePicker.toggle()
         }label: {
-            Image(systemName: "person.crop.circle.badge.plus")
-                .resizable()
-                .foregroundColor(.black.opacity(0.8))
-                .frame(width: 100, height: 100)
-                .padding()
+            
+            VStack{
+                if let image = loginVM.image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 128, height: 128)
+                        .cornerRadius(64)
+                }else{
+                    Image(systemName: "person.badge.plus")
+                        .font(.system(size: 64))
+                        .padding()
+                        .foregroundColor(Color(.label))
+                }
+            }.overlay(RoundedRectangle(cornerRadius: 64).stroke(.black, lineWidth: 3))
         }
     }
     

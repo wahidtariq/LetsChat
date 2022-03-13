@@ -17,6 +17,7 @@
 		9A52D56927DDB687002D26AC /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A52D56827DDB687002D26AC /* HomeView.swift */; };
 		9A52D57027DDC335002D26AC /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A52D56F27DDC335002D26AC /* FirebaseManager.swift */; };
 		9A52D57227DDC365002D26AC /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A52D57127DDC365002D26AC /* LoginViewModel.swift */; };
+		9A52D57427DDEB5A002D26AC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A52D57327DDEB5A002D26AC /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		9A52D56827DDB687002D26AC /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		9A52D56F27DDC335002D26AC /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		9A52D57127DDC365002D26AC /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		9A52D57327DDEB5A002D26AC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				9A52D55127DC7D31002D26AC /* LetsChatApp.swift */,
+				9A52D57527DDEB7B002D26AC /* Services */,
 				9A52D56E27DDC324002D26AC /* Model */,
 				9A52D56A27DDC2C7002D26AC /* View */,
 				9A52D56B27DDC2D6002D26AC /* ViewModel */,
@@ -102,9 +105,17 @@
 		9A52D56E27DDC324002D26AC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9A52D56F27DDC335002D26AC /* FirebaseManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		9A52D57527DDEB7B002D26AC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				9A52D56F27DDC335002D26AC /* FirebaseManager.swift */,
+				9A52D57327DDEB5A002D26AC /* ImagePicker.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,6 +199,7 @@
 				9A52D57027DDC335002D26AC /* FirebaseManager.swift in Sources */,
 				9A52D56927DDB687002D26AC /* HomeView.swift in Sources */,
 				9A52D55427DC7D31002D26AC /* LoginPage.swift in Sources */,
+				9A52D57427DDEB5A002D26AC /* ImagePicker.swift in Sources */,
 				9A52D57227DDC365002D26AC /* LoginViewModel.swift in Sources */,
 				9A52D55227DC7D31002D26AC /* LetsChatApp.swift in Sources */,
 			);
