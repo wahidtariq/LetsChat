@@ -82,6 +82,7 @@ class LoginViewModel: ObservableObject{
     func persisImageToFirebaseStorage(){
         
         guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
+        
         let storageRefrence = FirebaseManager.shared.storage.reference(withPath: uid)
         
         guard let data = image?.jpegData(compressionQuality: 0.5) else { return }
@@ -98,7 +99,25 @@ class LoginViewModel: ObservableObject{
                     self.loginStatusMessage = "failed to download the url of image form firebase \(err.localizedDescription)"
                 }
                 self.loginStatusMessage = "success! \(String(describing: url?.absoluteURL))"
+                
+                guard let safeUrl = url else { return }
+                self.storeUserInformation(imageProfileURl: safeUrl)
             }
+        }
+    }
+    
+    func storeUserInformation(imageProfileURl: URL){
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
+        let userData = ["email": email, "uid": uid, "profileUrl": imageProfileURl.absoluteString]
+        
+        FirebaseManager.shared.firestore.collection("users")
+            .document(uid).setData(userData) { [weak self]error in
+                guard let self = self else { return }
+                if let err = error{
+                    self.loginStatusMessage = "cannot save data into firestore \(err)"
+                return
+            }
+                print("success!")
         }
     }
 }
